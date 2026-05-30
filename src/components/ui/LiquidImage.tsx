@@ -42,8 +42,9 @@ function LiquidPlane({ imgUrl }: { imgUrl: string }) {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
   const [hovered, setHover] = useState(false);
 
-  // Calculate aspect ratio
-  const aspect = texture.image.width / texture.image.height;
+  // Calculate aspect ratio 
+  const img = texture.image as any;
+  const aspect = img ? img.width / img.height : 1;
 
   // Use useMemo to avoid recreating uniforms
   const uniforms = useMemo(

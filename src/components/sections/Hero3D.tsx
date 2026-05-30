@@ -67,10 +67,10 @@ export default function Hero3D() {
 
       {/* Huge Background Typography (Faded & Masked) */}
       <div 
-        className="absolute inset-0 flex flex-col justify-center px-6 md:px-16 pointer-events-none z-0 -mt-[30vh] md:mt-24"
+        className="absolute inset-0 flex flex-col justify-center px-6 md:px-16 pointer-events-none z-0 -mt-[45vh] md:mt-24"
         style={{
-           maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0) 65%)',
-           WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0) 65%)'
+           maskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0) 80%)',
+           WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0) 80%)'
         }}
       >
          <div className="flex flex-col">
@@ -81,7 +81,7 @@ export default function Hero3D() {
                animate={{ opacity: 1, filter: "blur(0px)", x: 0 }} 
                exit={{ opacity: 0, filter: "blur(10px)", x: 50 }}
                transition={{ duration: 0.8, ease: "easeOut" }}
-               className="font-syncopate text-[12vw] md:text-[8vw] lg:text-[7vw] font-black text-black/20 leading-none whitespace-nowrap"
+               className="font-syncopate text-[12vw] md:text-[8vw] lg:text-[7vw] font-black text-black/30 leading-none whitespace-nowrap"
              >
                {slide.brand}
              </motion.h1>
@@ -93,7 +93,7 @@ export default function Hero3D() {
                animate={{ opacity: 1, filter: "blur(0px)", x: 0 }} 
                exit={{ opacity: 0, filter: "blur(10px)", x: -50 }}
                transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-               className="font-syncopate text-[10vw] md:text-[6vw] lg:text-[5vw] font-bold text-black/25 leading-none flex items-center gap-4 ml-[5vw] md:ml-[12vw] -mt-2"
+               className="font-syncopate text-[10vw] md:text-[6vw] lg:text-[5vw] font-bold text-black/40 leading-none flex items-center gap-4 ml-[5vw] md:ml-[12vw] -mt-2"
              >
                <span className="text-[#FF0000] drop-shadow-[0_0_8px_rgba(255,0,0,0.8)] text-[9vw] md:text-[5vw] lg:text-[4vw]">///</span> {slide.model}
              </motion.h2>
@@ -129,13 +129,13 @@ export default function Hero3D() {
       </div>
 
       {/* Right Bottom Info Block */}
-      <div className="absolute bottom-[100px] md:bottom-12 left-6 right-[60px] md:left-auto md:right-[15%] max-w-none md:max-w-lg z-20 text-left md:text-right pointer-events-none">
+      <div className="absolute bottom-[100px] md:bottom-12 left-4 md:left-auto right-[60px] md:right-[15%] max-w-none md:max-w-lg z-20 text-left md:text-right pointer-events-none">
         <div className="hidden md:block w-12 h-[1px] bg-gray-400 mb-4 ml-auto" />
-        <p className="font-space text-[11px] md:text-sm text-gray-600 leading-relaxed max-w-[280px] md:max-w-none md:ml-auto">
+        <p className="font-space text-[10px] md:text-sm text-gray-600 leading-relaxed max-w-[220px] md:max-w-none md:ml-auto">
           {slide.desc}
         </p>
-        <div className="mt-4 md:mt-6 flex items-center justify-start md:justify-end gap-6 pointer-events-auto">
-           <button className="relative overflow-hidden group bg-[#E6E6E6] text-gray-800 px-6 md:px-8 py-2.5 md:py-3 rounded-full font-space text-xs md:text-sm font-bold transition-all duration-300 shadow-[6px_6px_12px_#b8b8b8,-6px_-6px_12px_#ffffff] hover:shadow-[8px_8px_16px_#b8b8b8,-8px_-8px_16px_#ffffff] hover:-translate-y-0.5 active:shadow-[inset_6px_6px_12px_#b8b8b8,inset_-6px_-6px_12px_#ffffff] active:translate-y-0 flex items-center gap-2">
+        <div className="mt-3 md:mt-6 flex items-center justify-start md:justify-end gap-4 md:gap-6 pointer-events-auto">
+           <button className="relative overflow-hidden group bg-[#E6E6E6] text-gray-800 px-4 md:px-8 py-2 md:py-3 rounded-full font-space text-[10px] md:text-sm font-bold transition-all duration-300 shadow-[6px_6px_12px_#b8b8b8,-6px_-6px_12px_#ffffff] hover:shadow-[8px_8px_16px_#b8b8b8,-8px_-8px_16px_#ffffff] hover:-translate-y-0.5 active:shadow-[inset_6px_6px_12px_#b8b8b8,inset_-6px_-6px_12px_#ffffff] active:translate-y-0 flex items-center gap-2">
              <span className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300">↗</span> 
              Start Exploring
            </button>
@@ -170,11 +170,11 @@ export default function Hero3D() {
       </div>
 
       {/* Bottom Left Slider / Thumbnails */}
-      <div className="absolute bottom-6 md:bottom-12 left-6 md:left-12 flex gap-3 z-30 pointer-events-auto">
+      <div className="absolute bottom-5 md:bottom-12 left-4 md:left-12 flex gap-2 md:gap-3 z-30 pointer-events-auto">
         {slides.map((s, i) => (
           <div key={s.id} className="flex flex-col gap-2 cursor-pointer" onClick={() => setCurrentIndex(i)}>
-             <div className={`w-12 h-12 md:w-16 md:h-16 rounded-xl overflow-hidden bg-white/50 backdrop-blur-md border transition-all duration-500 flex items-center justify-center ${i === currentIndex ? 'border-gray-800 shadow-xl scale-110' : 'border-transparent opacity-50 hover:opacity-100'}`}>
-                <img src={s.img} alt={s.brand} className="w-10 h-10 md:w-12 md:h-12 object-contain drop-shadow-sm" />
+             <div className={`w-10 h-10 md:w-16 md:h-16 rounded-xl overflow-hidden bg-white/50 backdrop-blur-md border transition-all duration-500 flex items-center justify-center ${i === currentIndex ? 'border-gray-800 shadow-xl scale-110' : 'border-transparent opacity-50 hover:opacity-100'}`}>
+                <img src={s.img} alt={s.brand} className="w-8 h-8 md:w-12 md:h-12 object-contain drop-shadow-sm" />
              </div>
              {/* Slider Progress Bar */}
              <div className="w-full h-1 bg-black/10 rounded-full overflow-hidden">

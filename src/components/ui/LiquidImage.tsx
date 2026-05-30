@@ -46,7 +46,7 @@ function LiquidPlane({ imgUrl }: { imgUrl: string }) {
   const img = texture.image as any;
   const aspect = img ? img.width / img.height : 1;
 
-  // Use useMemo to avoid recreating uniforms
+  // Use useMemo to avoid recreating uniforms 
   const uniforms = useMemo(
     () => ({
       uTexture: { value: texture },

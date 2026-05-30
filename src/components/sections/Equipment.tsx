@@ -49,19 +49,18 @@ export default function Equipment() {
         </motion.h2>
       </div>
 
-      {/* Navigation Arrows */}
-      <div className="absolute top-1/2 left-2 md:left-12 -translate-y-1/2 z-50 pointer-events-auto">
-        <button onClick={prevSlide} className="w-10 h-10 md:w-14 md:h-14 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center shadow-xl hover:bg-white transition-all hover:scale-110 active:scale-95 border border-gray-100">
-           <ChevronLeft className="w-5 h-5 md:w-7 md:h-7 text-gray-800" />
-        </button>
-      </div>
-      <div className="absolute top-1/2 right-2 md:right-12 -translate-y-1/2 z-50 pointer-events-auto">
-        <button onClick={nextSlide} className="w-10 h-10 md:w-14 md:h-14 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center shadow-xl hover:bg-white transition-all hover:scale-110 active:scale-95 border border-gray-100">
-           <ChevronRight className="w-5 h-5 md:w-7 md:h-7 text-gray-800" />
-        </button>
-      </div>
-
       <div className="relative h-[650px] md:h-[750px] w-full flex justify-center items-start mt-8">
+        {/* Navigation Arrows */}
+        <div className="absolute top-[420px] md:top-[500px] left-1/2 -translate-x-[185px] md:-translate-x-[231px] z-50 pointer-events-auto -translate-y-1/2">
+          <button onClick={prevSlide} className="w-10 h-10 md:w-14 md:h-14 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center shadow-xl hover:bg-white transition-all hover:scale-110 active:scale-95 border border-gray-100">
+             <ChevronLeft className="w-5 h-5 md:w-7 md:h-7 text-gray-800" />
+          </button>
+        </div>
+        <div className="absolute top-[420px] md:top-[500px] left-1/2 translate-x-[145px] md:translate-x-[175px] z-50 pointer-events-auto -translate-y-1/2">
+          <button onClick={nextSlide} className="w-10 h-10 md:w-14 md:h-14 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center shadow-xl hover:bg-white transition-all hover:scale-110 active:scale-95 border border-gray-100">
+             <ChevronRight className="w-5 h-5 md:w-7 md:h-7 text-gray-800" />
+          </button>
+        </div>
         {equipment.map((item, index) => {
           const pos = getPosition(index);
           const isCenter = pos === 0;

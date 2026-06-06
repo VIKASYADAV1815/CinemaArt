@@ -5,13 +5,24 @@ import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const products = [
-  { title: "Canon EOS R5", desc: "45MP Full-Frame Mirrorless", img: "/canon.webp" },
-  { title: "Fujifilm X-E4", desc: "Compact Mirrorless System", img: "/fujifilms.webp" },
-  { title: "Nikon Z9", desc: "Flagship Mirrorless", img: "/niko.webp" },
-  { title: "Sony A7 IV", desc: "33MP Full-Frame Hybrid", img: "/canon.webp" },
-  { title: "GoPro Hero 12", desc: "Action Camera 5.3K", img: "/gopro.webp" },
-  { title: "Insta360 X3", desc: "360-degree Action Camera", img: "/fujifilms.webp" },
-  { title: "DJI Mavic 3", desc: "Professional Aerial Drone", img: "/dji.webp" },
+  { 
+    title: "Sony Alpha 7R V", 
+    desc: "61MP Full-Frame High-Resolution Mirrorless", 
+    brand: "Sony",
+    img: "/heroimg/sony.png"
+  },
+  { 
+    title: "Fujifilm X-T5", 
+    desc: "40MP APS-C Mirrorless System", 
+    brand: "Fujifilm",
+    img: "/heroimg/fujifilm.png" 
+  },
+  { 
+    title: "Nikon Z8", 
+    desc: "45.7MP Full-Frame Hybrid Mirrorless", 
+    brand: "Nikon",
+    img: "/nikonz8.jpg" 
+  }
 ];
 
 export default function ProductsCarousel() {
@@ -37,7 +48,7 @@ export default function ProductsCarousel() {
 
   return (
     <section className="bg-[#E6E6E6] py-32 overflow-hidden relative" id="products">
-      <div className="w-full text-center mb-12">
+      <div className="w-full text-center mb-12 px-4">
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -45,8 +56,17 @@ export default function ProductsCarousel() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="font-syncopate text-2xl md:text-5xl font-bold text-[#111] uppercase tracking-widest"
         >
-          Our Top Products
+          Top Highlights
         </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="font-space mt-4 text-gray-600 max-w-2xl mx-auto text-sm md:text-base"
+        >
+          Explore current Sony, Fujifilm, and Nikon camera highlights picked from their flagship mirrorless ranges.
+        </motion.p>
       </div>
 
       {/* Navigation Arrows */}
@@ -63,20 +83,15 @@ export default function ProductsCarousel() {
 
       <div className="relative h-[600px] w-full max-w-7xl mx-auto flex items-center justify-center perspective-[1200px]">
         {products.map((product, index) => {
-          // 1. Calculate the raw distance between this card and the center active card
           let offset = index - currentIndex;
           
-          // 2. Wrap the offset so cards always take the shortest paths around the circle 
-          // (This explicitly eliminates the "loop back" jerkiness when jumping from end back to start)
           const halfLength = products.length / 2;
           if (offset > halfLength) offset -= products.length;
           if (offset < -halfLength) offset += products.length;
 
-          // 3. Determine visibility thresholds
           const isVisible = Math.abs(offset) <= (isMobile ? 0 : 1);
           const xOffset = isMobile ? 0 : 340;
 
-          // 4. Interpolate structural values cleanly based on distance from zero (center)
           const x = offset * xOffset;
           const scale = offset === 0 ? 1 : 0.82;
           const opacity = offset === 0 ? 1 : isVisible ? 0.6 : 0;
@@ -86,7 +101,6 @@ export default function ProductsCarousel() {
           return (
             <motion.div
               key={index}
-              // Animate layout changes using hardware-accelerated transforms
               animate={{ 
                 x, 
                 scale, 
@@ -95,21 +109,23 @@ export default function ProductsCarousel() {
               }}
               transition={{ 
                 type: "spring", 
-                stiffness: 170, // Slightly reduced stiffness for silky structural pacing
-                damping: 24,    // Perfectly counterbalanced damping to stop vibration snaps
-                mass: 0.8       // Gives the card a lightweight, ultra-responsive tactile feel
+                stiffness: 170,
+                damping: 24,
+                mass: 0.8
               }}
               className="absolute w-[80vw] sm:w-[350px] md:w-[450px] h-[450px] md:h-[550px] cursor-pointer"
               onClick={() => setCurrentIndex(index)}
               style={{ 
                 transformStyle: "preserve-3d",
                 zIndex: Math.round(zIndex),
-                // Avoid capturing mouse clicks on completely invisible background cards
                 pointerEvents: isVisible ? "auto" : "none" 
               }}
             >
               <div className="w-full h-full bg-white rounded-lg shadow-2xl flex flex-col p-2 border border-gray-100">
                 <div className="w-full h-[70%] bg-gray-100 rounded-md overflow-hidden relative">
+                  <span className="absolute top-4 left-4 bg-black/80 backdrop-blur text-white text-xs font-syncopate px-3 py-1 rounded-full z-10">
+                    {product.brand}
+                  </span>
                   <img
                     src={product.img}
                     alt={product.title}

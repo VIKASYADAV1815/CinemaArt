@@ -5,7 +5,7 @@ import { MapPin, Award } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#0a0a0a] px-6 py-20 text-white md:px-12 md:py-32" id="about">
+    <footer className="relative bg-[#1a1a1a] px-6 py-20 text-white md:px-12 md:py-32" id="about">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-16 md:grid-cols-2 lg:grid-cols-4">
           

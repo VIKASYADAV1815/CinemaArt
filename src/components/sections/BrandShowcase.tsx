@@ -42,8 +42,7 @@ const categories = [
       { 
         name: "GoPro", 
         type: "img", 
-        imageClass: "brightness-0",
-        src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/GoPro_logo.svg/512px-GoPro_logo.svg.png" 
+        src: "https://upload.wikimedia.org/wikipedia/commons/c/c3/GoPro_logo.svg" 
       },
       { 
         name: "DJI", 

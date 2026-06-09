@@ -80,12 +80,12 @@ export default function Equipment() {
 
       <div className="relative h-[650px] md:h-[750px] w-full flex justify-center items-start mt-8">
         {/* Navigation Arrows */}
-        <div className="absolute top-[420px] md:top-[500px] left-1/2 -translate-x-[185px] md:-translate-x-[231px] z-50 pointer-events-auto -translate-y-1/2">
+        <div className="absolute top-[420px] md:top-[500px] left-1/2 -translate-x-[185px] md:-translate-x-57.75 z-50 pointer-events-auto -translate-y-1/2">
           <button onClick={prevSlide} className="w-10 h-10 md:w-14 md:h-14 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center shadow-xl hover:bg-white transition-all hover:scale-110 active:scale-95 border border-gray-100">
              <ChevronLeft className="w-5 h-5 md:w-7 md:h-7 text-gray-800" />
           </button>
         </div>
-        <div className="absolute top-[420px] md:top-[500px] left-1/2 translate-x-[145px] md:translate-x-[175px] z-50 pointer-events-auto -translate-y-1/2">
+        <div className="absolute top-[420px] md:top-[500px] left-1/2 translate-x-36.25 md:translate-x-43.75 z-50 pointer-events-auto -translate-y-1/2">
           <button onClick={nextSlide} className="w-10 h-10 md:w-14 md:h-14 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center shadow-xl hover:bg-white transition-all hover:scale-110 active:scale-95 border border-gray-100">
              <ChevronRight className="w-5 h-5 md:w-7 md:h-7 text-gray-800" />
           </button>
@@ -117,11 +117,11 @@ export default function Equipment() {
                 zIndex: isCenter ? 30 : 10,
                 pointerEvents: isVisible ? "auto" : "none"
               }}
-              className="absolute top-12 w-[260px] md:w-[310px] flex flex-col items-center cursor-pointer"
+              className="absolute top-12 w-[260px] md:w-77.5 flex flex-col items-center cursor-pointer"
               onClick={() => setCurrentIndex(index)}
             >
               <div className="w-full bg-white rounded-[1.25rem] md:rounded-[1.5rem] p-2 md:p-3 shadow-sm flex flex-col h-[320px] md:h-[380px]">
-                <div className="w-full h-[220px] md:h-[280px] bg-[#E6E6E6] rounded-[0.8rem] md:rounded-[1rem] overflow-hidden">
+                <div className="w-full h-55 md:h-70 bg-background rounded-[0.8rem] md:rounded-2xl overflow-hidden">
                   <img src={item.img} alt={item.title} className="w-full h-full object-cover mix-blend-multiply" />
                 </div>
                 <div className="mt-3 md:mt-4 px-2 relative">

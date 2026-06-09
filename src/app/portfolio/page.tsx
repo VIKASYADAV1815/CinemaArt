@@ -189,7 +189,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative py-32 px-6 md:px-16 border-t border-[#111] bg-[#E6E6E6] overflow-hidden">
+      <section className="relative py-32 px-6 md:px-16 border-t border-[#111] bg-background overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none" />
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center relative z-10">
           <h2 className="font-syncopate text-4xl md:text-6xl font-black text-[#111] uppercase leading-tight mb-8">

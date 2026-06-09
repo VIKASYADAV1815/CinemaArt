@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, Check, ShieldCheck, Truck, ChevronLeft, ChevronRight, ChevronDown, X } from "lucide-react";
+import { ArrowLeft, ShieldCheck, Truck, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 import { use, useState, useEffect } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -73,8 +73,8 @@ export default function ProductPage({ params }: { params: Promise<{ category: st
           animate={{ opacity: 1, y: 0 }}
           className="flex items-center gap-2 text-xs font-space text-gray-500 mb-8"
         >
-          <Link href="/shop" className="hover:text-[#111] transition-colors flex items-center gap-1">
-            <ArrowLeft className="w-3 h-3" /> Back to Shop
+          <Link href="/products" className="hover:text-[#111] transition-colors flex items-center gap-1">
+            <ArrowLeft className="w-3 h-3" /> Back to Products
           </Link>
           <span>/</span>
           <span className="capitalize">{resolvedParams.category.replace('-', ' ')}</span>
@@ -177,13 +177,6 @@ export default function ProductPage({ params }: { params: Promise<{ category: st
             <h1 className="font-syncopate text-2xl md:text-4xl font-semibold text-[#111] mb-4 leading-tight">
               {product.name}
             </h1>
-            
-            <div className="flex items-center gap-4 mb-8 hidden">
-              <span className="font-space text-3xl text-[#111] font-medium tracking-tight">{product.price}</span>
-              <span className="px-3 py-1.5 bg-green-500 text-white text-[10px] font-syncopate uppercase tracking-[0.2em] font-bold rounded-sm flex items-center gap-1">
-                <Check className="w-3 h-3" /> {product.status}
-              </span>
-            </div>
 
             <p className="font-space text-gray-600 mb-8 leading-relaxed text-sm md:text-base">
               {product.overview}
@@ -245,25 +238,15 @@ export default function ProductPage({ params }: { params: Promise<{ category: st
               </ul>
             </div>
 
-            {/* Actions */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <button className="flex-1 bg-[#111] text-white font-syncopate text-xs tracking-widest uppercase py-4 rounded-sm hover:bg-black hover:scale-[1.02] active:scale-95 transition-all duration-300">
-                ADD TO CART
-              </button>
-              <button className="flex-1 bg-white border border-[#111] text-[#111] font-syncopate text-xs tracking-widest uppercase py-4 rounded-sm hover:bg-gray-50 hover:scale-[1.02] active:scale-95 transition-all duration-300">
-                INQUIRE FOR RENTAL
-              </button>
-            </div>
-
-            {/* Trust Badges */}
+            {/* Information Section - No Pricing or Add to Cart */}
             <div className="grid grid-cols-2 gap-4 border-t border-gray-300 pt-8">
               <div className="flex items-center gap-3">
                 <ShieldCheck className="w-5 h-5 text-gray-400" />
-                <span className="font-space text-xs text-gray-500">Official Warranty<br/>Included</span>
+                <span className="font-space text-xs text-gray-500">Authorized<br/>Dealer</span>
               </div>
               <div className="flex items-center gap-3">
                 <Truck className="w-5 h-5 text-gray-400" />
-                <span className="font-space text-xs text-gray-500">Secure Insured<br/>Shipping</span>
+                <span className="font-space text-xs text-gray-500">Information<br/>Available</span>
               </div>
             </div>
 
@@ -352,46 +335,6 @@ export default function ProductPage({ params }: { params: Promise<{ category: st
 
       </div>
     </main>
-
-    {/* Lightbox */}
-    <AnimatePresence>
-      {isLightboxOpen && (
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-100 bg-white/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-12"
-        >
-          <button 
-            onClick={() => setIsLightboxOpen(false)}
-            className="absolute top-6 right-6 md:top-10 md:right-10 w-12 h-12 bg-[#111] text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform z-50 shadow-xl"
-          >
-            <X className="w-6 h-6" />
-          </button>
-
-          <button onClick={prevImage} className="absolute left-4 md:left-12 top-1/2 -translate-y-1/2 w-14 h-14 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-xl hover:bg-[#111] hover:text-white transition-all hover:scale-110 z-50">
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-
-          <div className="relative w-full max-w-6xl max-h-[85vh] flex items-center justify-center">
-            <img
-              src={activeColor.images[currentImage]}
-              alt={`${product.name} - ${activeColor.name} (Enlarged)`}
-              className="max-w-full max-h-full object-contain drop-shadow-2xl"
-            />
-          </div>
-
-          <button onClick={nextImage} className="absolute right-4 md:right-12 top-1/2 -translate-y-1/2 w-14 h-14 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-xl hover:bg-[#111] hover:text-white transition-all hover:scale-110 z-50">
-            <ChevronRight className="w-6 h-6" />
-          </button>
-          
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 font-space text-sm font-medium text-gray-500 bg-white/80 px-4 py-2 rounded-full shadow-sm">
-            {currentImage + 1} / {activeColor.images.length}
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-
     <Footer />
     </>
   );

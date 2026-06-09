@@ -97,7 +97,7 @@ export default function Features() {
               transition={{ duration: 0.8, delay: index * 0.1, ease: premiumEase }}
               className="w-full bg-white rounded-2xl md:rounded-3xl p-4 shadow-sm flex flex-col border border-gray-100 group transition-colors duration-300 hover:bg-[#FBFBFB]"
             >
-              <div className="w-full aspect-[4/3] bg-[#E6E6E6] rounded-xl md:rounded-2xl overflow-hidden relative mb-5">
+              <div className="w-full aspect-[4/3] bg-background rounded-xl md:rounded-2xl overflow-hidden relative mb-5">
                 <motion.img 
                   src={service.img} 
                   alt={service.title} 
@@ -108,7 +108,7 @@ export default function Features() {
                 />
               </div>
               
-              <div className="px-2 pb-2 flex flex-col flex-grow justify-between">
+              <div className="px-2 pb-2 flex flex-col grow justify-between">
                 <div>
                   <div className="flex items-center justify-between gap-4 mb-2">
                     <h3 className="font-space font-bold text-gray-900 text-lg md:text-xl tracking-tight">

@@ -47,7 +47,7 @@ export default function ProductsCarousel() {
   const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + products.length) % products.length);
 
   return (
-    <section className="bg-[#E6E6E6] py-32 overflow-hidden relative" id="products">
+    <section className="bg-background py-32 overflow-hidden relative" id="products">
       <div className="w-full text-center mb-12 px-4">
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}
@@ -81,7 +81,7 @@ export default function ProductsCarousel() {
         </button>
       </div>
 
-      <div className="relative h-[600px] w-full max-w-7xl mx-auto flex items-center justify-center perspective-[1200px]">
+      <div className="relative h-[600px] w-full max-w-7xl mx-auto flex items-center justify-center perspective-distant">
         {products.map((product, index) => {
           let offset = index - currentIndex;
           
@@ -113,7 +113,7 @@ export default function ProductsCarousel() {
                 damping: 24,
                 mass: 0.8
               }}
-              className="absolute w-[80vw] sm:w-[350px] md:w-[450px] h-[450px] md:h-[550px] cursor-pointer"
+              className="absolute w-[80vw] sm:w-87.5 md:w-[450px] h-[450px] md:h-137.5 cursor-pointer"
               onClick={() => setCurrentIndex(index)}
               style={{ 
                 transformStyle: "preserve-3d",

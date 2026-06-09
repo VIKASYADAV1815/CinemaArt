@@ -211,7 +211,7 @@ export default function AboutPage() {
             EXPLORE THE <br/> <span className="text-transparent" style={{ WebkitTextStroke: '2px #111' }}>STUDIO</span>
           </h2>
           <div className="flex flex-col sm:flex-row gap-6 mt-8">
-            <Link href="/shop" className="relative overflow-hidden group bg-[#111] text-white px-8 py-4 font-space text-sm font-bold flex items-center justify-center gap-3">
+            <Link href="/products" className="relative overflow-hidden group bg-[#111] text-white px-8 py-4 font-space text-sm font-bold flex items-center justify-center gap-3">
               <span className="relative z-10 flex items-center gap-2">START EXPLORING <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" /></span>
               <div className="absolute inset-0 bg-[#FF0000] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
             </Link>

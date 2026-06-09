@@ -37,7 +37,7 @@ export default function Navbar() {
   const glassBlur = useTransform(scrollY, [0, 120], ["blur(0px)", "blur(20px)"]);
 
   const navItems = [
-    { name: "SHOP", href: "/shop", meta: "F/1.8", hidden: true },
+    { name: "PRODUCTS", href: "/products", meta: "F/1.8" },
     { name: "ABOUT US", href: "/about", meta: "TV 1/250s" },
     { name: "PORTFOLIO", href: "/portfolio", meta: "AV F/1.2" },
     { name: "SERVICES", href: "/services", meta: "ISO 400" },

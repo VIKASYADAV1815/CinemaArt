@@ -24,7 +24,7 @@ const categories = [
 // Comprehensive brands matched with the Home Page BrandShowcase
 const brands = ["Sony", "Fujifilm", "Canon", "Nikon", "GoPro", "DJI", "Insta360", "Sigma", "Rode", "Ulanzi"];
 
-export default function ShopPage() {
+export default function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
@@ -57,10 +57,10 @@ export default function ShopPage() {
           className="mb-12 border-b border-gray-300 pb-8"
         >
           <h1 className="font-syncopate text-4xl md:text-6xl font-bold text-[#111] uppercase tracking-tighter">
-            Equipment <br/> <span className="text-gray-400">Catalog</span>
+            Equipment <br/> <span className="text-gray-400">Infographic</span>
           </h1>
           <p className="font-space mt-4 text-gray-600 max-w-xl">
-            Explore our curated selection of professional-grade cinema and photography equipment. Authorized dealer for industry-leading brands.
+            Explore detailed specifications and information about our professional-grade cinema and photography equipment from industry-leading brands.
           </p>
         </motion.div>
 
@@ -176,7 +176,7 @@ export default function ShopPage() {
 
                     {/* Hover Action Button */}
                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 z-20 w-3/4">
-                      <Link href={`/shop/${product.category.toLowerCase().replace(/ & | /g, '-')}/${product.slug}`} className="block w-full text-center bg-[#111] text-white font-syncopate text-[10px] uppercase tracking-widest py-3 hover:bg-black transition-colors shadow-lg">
+                      <Link href={`/products/${product.category.toLowerCase().replace(/ & | /g, '-')}/${product.slug}`} className="block w-full text-center bg-[#111] text-white font-syncopate text-[10px] uppercase tracking-widest py-3 hover:bg-black transition-colors shadow-lg">
                         View Details
                       </Link>
                     </div>
@@ -189,8 +189,7 @@ export default function ShopPage() {
                     <p className="text-xs text-gray-500 font-space mb-4 line-clamp-2 min-h-[32px]">{product.desc}</p>
                     
                     <div className="mt-auto flex items-end justify-between">
-                      <span className="font-space font-medium text-lg text-[#111] tracking-tight hidden">{product.price}</span>
-                      <Link href={`/shop/${product.category.toLowerCase().replace(/ & | /g, '-')}/${product.slug}`} className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-[#111] group-hover:bg-[#111] group-hover:text-white transition-colors ml-auto">
+                      <Link href={`/products/${product.category.toLowerCase().replace(/ & | /g, '-')}/${product.slug}`} className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-[#111] group-hover:bg-[#111] group-hover:text-white transition-colors ml-auto">
                         <ArrowUpRight className="w-4 h-4" />
                       </Link>
                     </div>

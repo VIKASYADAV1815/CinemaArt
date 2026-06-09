@@ -86,7 +86,6 @@ export default function Navbar() {
             </Link>
             
             {navItems.map((item, index) => {
-              if (item.hidden) return null;
               const isActive = pathname.startsWith(item.href);
               return (
               <div
@@ -194,7 +193,6 @@ export default function Navbar() {
 
               {/* Other Options - Compact Font Sizing */}
               {navItems.map((item, index) => {
-                if (item.hidden) return null;
                 const isActive = pathname === item.href || pathname.startsWith(item.href + '/');
 
                 return (

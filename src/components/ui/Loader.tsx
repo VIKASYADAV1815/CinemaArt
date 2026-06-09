@@ -50,8 +50,12 @@ export default function Loader() {
   if (!mounted) {
     return (
       <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#111]">
-        <h1 className="font-syncopate text-2xl font-bold tracking-widest text-white md:text-5xl lg:text-7xl text-center px-4">
-          CINEMA ART STUDIOS
+        <h1 className="font-syncopate text-2xl font-bold tracking-widest text-white md:text-5xl lg:text-7xl text-center px-4 flex">
+          {"CINEMA ART STUDIOS".split("").map((char, index) => (
+            <span key={index} className={index >= 11 ? "text-[#FF0000]" : ""}>
+              {char === " " ? "\u00A0" : char}
+            </span>
+          ))}
         </h1>
       </div>
     );
@@ -67,9 +71,13 @@ export default function Loader() {
         >
           <div className="overflow-hidden px-4">
             <motion.h1
-              className="font-syncopate text-2xl font-bold tracking-widest text-white md:text-5xl lg:text-7xl tabular-nums text-center"
+              className="font-syncopate text-2xl font-bold tracking-widest text-white md:text-5xl lg:text-7xl tabular-nums text-center flex"
             >
-              {text}
+              {text.split("").map((char, index) => (
+                <span key={index} className={index >= 11 ? "text-[#FF0000]" : ""}>
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
             </motion.h1>
           </div>
         </motion.div>

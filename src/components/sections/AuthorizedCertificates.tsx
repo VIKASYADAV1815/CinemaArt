@@ -11,6 +11,7 @@ const certificates = [
 
 export default function AuthorizedCertificates() {
   return (
+    
     <section className="bg-[#E6E6E6] py-24" id="certificates">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* User can add their custom image/layout here based on the reference */}

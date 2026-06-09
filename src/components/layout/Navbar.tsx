@@ -2,12 +2,15 @@
 
 import { motion, useScroll, useTransform, useVelocity, useSpring, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const { scrollY } = useScroll();
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const isHomeActive = pathname === "/";
 
   // 1. Scroll velocity monitoring for dynamic FPS
   const scrollVelocity = useVelocity(scrollY);
@@ -34,6 +37,7 @@ export default function Navbar() {
   const glassBlur = useTransform(scrollY, [0, 120], ["blur(0px)", "blur(20px)"]);
 
   const navItems = [
+    { name: "SHOP", href: "/shop", meta: "F/1.8", hidden: true },
     { name: "ABOUT US", href: "/about", meta: "TV 1/250s" },
     { name: "PORTFOLIO", href: "/portfolio", meta: "AV F/1.2" },
     { name: "SERVICES", href: "/services", meta: "ISO 400" },
@@ -65,7 +69,7 @@ export default function Navbar() {
           
           {/* LEFT: Logo & Metadata Matrix */}
           <div className="flex items-center gap-4 select-none">
-            <Link href="#home" className="font-syncopate text-2xl font-bold tracking-widest hover:text-[#FF0000] transition-colors duration-300">
+            <Link href="/" className="font-syncopate text-2xl font-bold tracking-widest hover:text-[#FF0000] transition-colors duration-300">
               CA.
             </Link>
             
@@ -77,11 +81,14 @@ export default function Navbar() {
 
           {/* DESKTOP CENTER MENU */}
           <div className="hidden md:flex gap-12 items-center text-xs font-syncopate font-medium tracking-[0.25em]">
-            <Link href="/" className="font-caveat text-4xl lowercase text-[#FF0000] tracking-normal normal-case leading-none">
+            <Link href="/" className={`font-caveat text-4xl lowercase tracking-normal normal-case leading-none transition-colors duration-300 ${pathname === '/' ? 'text-[#FF0000]' : 'text-black/60 hover:text-black'}`}>
               Home
             </Link>
             
-            {navItems.map((item, index) => (
+            {navItems.map((item, index) => {
+              if (item.hidden) return null;
+              const isActive = pathname.startsWith(item.href);
+              return (
               <div
                 key={item.name}
                 className="flex flex-col items-center relative py-1.5 cursor-pointer"
@@ -91,8 +98,8 @@ export default function Navbar() {
                 <motion.span
                   initial={{ opacity: 0, y: 3 }}
                   animate={{ 
-                    opacity: hoveredIndex === index ? 1 : 0, 
-                    y: hoveredIndex === index ? -3 : 3 
+                    opacity: (hoveredIndex === index || isActive) ? 1 : 0, 
+                    y: (hoveredIndex === index || isActive) ? -3 : 3 
                   }}
                   transition={{ duration: 0.15, ease: [0.76, 0, 0.24, 1] }}
                   className="text-[7px] font-mono font-bold text-[#FF0000] tracking-normal absolute top-0"
@@ -100,19 +107,19 @@ export default function Navbar() {
                   {item.meta}
                 </motion.span>
 
-                <Link href={item.href} className="transition-colors duration-300 font-medium text-black/60 hover:text-black mt-1.5 relative">
+                <Link href={item.href} className={`transition-colors duration-300 font-medium mt-1.5 relative ${isActive ? 'text-[#FF0000]' : 'text-black/60 hover:text-black'}`}>
                   {item.name}
 
-                  {hoveredIndex === index && (
+                  {(hoveredIndex === index || isActive) && (
                     <motion.span 
                       layoutId="focusBracket"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                      className="absolute -inset-x-3 -inset-y-0.5 border-x-2 border-black/40 pointer-events-none"
+                      className={`absolute -inset-x-3 -inset-y-0.5 border-x-2 pointer-events-none ${isActive ? 'border-[#FF0000]/40' : 'border-black/40'}`}
                     />
                   )}
                 </Link>
               </div>
-            ))}
+            )})}
           </div>
 
           {/* RIGHT: Rec Node & Adjusted Mobile Trigger */}
@@ -177,33 +184,42 @@ export default function Navbar() {
                 <Link 
                   href="/" 
                   onClick={() => setIsOpen(false)}
-                  className="font-caveat text-4xl text-[#FF0000] lowercase tracking-normal block leading-none pb-2"
+                  className={`font-caveat text-4xl lowercase tracking-normal block leading-none pb-2 transition-colors ${
+                    isHomeActive ? "text-[#FF0000]" : "text-black/70 hover:text-[#FF0000]"
+                  }`}
                 >
                   home
                 </Link>
               </motion.div>
 
               {/* Other Options - Compact Font Sizing */}
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, x: -15 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.08 + (index + 1) * 0.04 }}
-                  className="flex flex-col border-b border-black/[0.06] pb-3"
-                >
-                  <span className="text-[7px] font-mono text-[#FF0000] font-bold tracking-normal mb-1">
-                    {item.meta}
-                  </span>
-                  <Link 
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className="hover:text-[#FF0000] text-black/80 hover:text-black transition-colors duration-200 text-xs tracking-[0.25em]"
+              {navItems.map((item, index) => {
+                if (item.hidden) return null;
+                const isActive = pathname === item.href || pathname.startsWith(item.href + '/');
+
+                return (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, x: -15 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.08 + (index + 1) * 0.04 }}
+                    className="flex flex-col border-b border-black/[0.06] pb-3"
                   >
-                    {item.name}
-                  </Link>
-                </motion.div>
-              ))}
+                    <span className={`text-[7px] font-mono font-bold tracking-normal mb-1 ${isActive ? "text-[#FF0000]" : "text-black/35"}`}>
+                      {item.meta}
+                    </span>
+                    <Link 
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`transition-colors duration-200 text-xs tracking-[0.25em] ${
+                        isActive ? "text-[#FF0000]" : "text-black/80 hover:text-black"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         )}
@@ -211,4 +227,3 @@ export default function Navbar() {
     </>
   );
 }
-
